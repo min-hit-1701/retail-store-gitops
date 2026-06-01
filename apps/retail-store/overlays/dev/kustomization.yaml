@@ -1,4 +1,4 @@
-# Kustomize overlay for dev environment
+﻿# Kustomize overlay for dev environment
 # Combines Kustomize patches with Helm chart rendering.
 # Helm chart: ../Chart.yaml (umbrella with 5 subchart dependencies)
 
@@ -29,17 +29,17 @@ labels:
 # Image tag overrides per service
 images:
   - name: ui
-    newName: <ECR_BASE_URL>/uit-devsecops-dev-ui
+    newName: 758346258990.dkr.ecr.ap-southeast-1.amazonaws.com/uit-devsecops-dev-ui
     newTag: latest
   - name: cart
-    newName: <ECR_BASE_URL>/uit-devsecops-dev-cart
+    newName: 758346258990.dkr.ecr.ap-southeast-1.amazonaws.com/uit-devsecops-dev-cart
     newTag: latest
   - name: orders
-    newName: <ECR_BASE_URL>/uit-devsecops-dev-orders
+    newName: 758346258990.dkr.ecr.ap-southeast-1.amazonaws.com/uit-devsecops-dev-orders
     newTag: latest
   - name: catalog
-    newName: <ECR_BASE_URL>/uit-devsecops-dev-catalog
+    newName: 758346258990.dkr.ecr.ap-southeast-1.amazonaws.com/uit-devsecops-dev-catalog
     newTag: latest
   - name: checkout
-    newName: <ECR_BASE_URL>/uit-devsecops-dev-checkout
+    newName: 758346258990.dkr.ecr.ap-southeast-1.amazonaws.com/uit-devsecops-dev-checkout
     newTag: latest
