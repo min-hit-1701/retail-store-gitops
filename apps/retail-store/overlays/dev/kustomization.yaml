@@ -1,11 +1,22 @@
+# Kustomize overlay for dev environment
+# Combines Kustomize patches with Helm chart rendering.
+# Requires --enable-helm in Argo CD ConfigMap (configured)
+
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 namespace: retail-store-dev
 
-resources:
-  - deployment.yaml
-  - service.yaml
+helmCharts:
+  - name: retail-store
+    repo: ""
+    version: "1.0.0"
+    releaseName: retail-store-dev
+    namespace: retail-store-dev
+    valuesFile: ../../values.yaml
+    additionalValuesFiles:
+      - ../../overlays/dev/values-dev.yaml
+    includeCRDs: true
 
 labels:
   - pairs:
@@ -14,18 +25,18 @@ labels:
       environment: dev
 
 images:
-  - name: retail-store-ui
+  - name: ui
     newName: 758346258990.dkr.ecr.ap-southeast-1.amazonaws.com/uit-devsecops-dev-ui
     newTag: latest
-  - name: retail-store-cart
+  - name: cart
     newName: 758346258990.dkr.ecr.ap-southeast-1.amazonaws.com/uit-devsecops-dev-cart
     newTag: latest
-  - name: retail-store-orders
+  - name: orders
     newName: 758346258990.dkr.ecr.ap-southeast-1.amazonaws.com/uit-devsecops-dev-orders
     newTag: latest
-  - name: retail-store-catalog
+  - name: catalog
     newName: 758346258990.dkr.ecr.ap-southeast-1.amazonaws.com/uit-devsecops-dev-catalog
     newTag: latest
-  - name: retail-store-checkout
+  - name: checkout
     newName: 758346258990.dkr.ecr.ap-southeast-1.amazonaws.com/uit-devsecops-dev-checkout
     newTag: latest
