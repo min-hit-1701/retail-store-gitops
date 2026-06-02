@@ -7,9 +7,10 @@ kind: Kustomization
 
 namespace: retail-store-dev
 
+helmGlobals:
+  chartHome: ../../
 helmCharts:
   - name: retail-store
-    chartHome: ../../
     version: "1.0.0"
     releaseName: retail-store-dev
     namespace: retail-store-dev
