@@ -9,7 +9,7 @@ namespace: retail-store-dev
 
 helmCharts:
   - name: retail-store
-    repo: ""
+    chartHome: ../../
     version: "1.0.0"
     releaseName: retail-store-dev
     namespace: retail-store-dev
